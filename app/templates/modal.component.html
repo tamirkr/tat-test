@@ -1,0 +1,51 @@
+<div class="modal fade" id="editModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <img class="img-edit" ng-src="{{$ctrl.bookToEdit.image}}" alt="">
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form name="form" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Title</label>
+                            <div class="col-sm-3">
+                                <input name="title" class="form-control" type="text" ng-model="$ctrl.bookToEdit.title"
+                                       required/>
+                                <div ng-messages="form.title.$error" ng-if="form.title.$dirty">
+                                    <div ng-message="required">This field is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Author</label>
+                            <div class="col-sm-3">
+                                <input name="author" class="form-control" type="text" ng-model="$ctrl.bookToEdit.author"
+                                       required/>
+                                <div ng-messages="form.author.$error" ng-if="form.author.$dirty">
+                                    <div ng-message="required">This field is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Date</label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" name="input" ng-model="$ctrl.bookToEdit.date" required/>
+                                <div role="alert">
+                                <span class="error" ng-show="form.input.$error.required">Required!</span>
+                                <span class="error" ng-show="form.input.$error.date">Not a valid date!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="button" data-dismiss="modal" ng-click="$ctrl.save()"
+                        ng-disabled="form.$pristine ? false : form.$invalid">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
